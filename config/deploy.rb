@@ -3,6 +3,9 @@ lock "~> 3.10.1"
 
 set :application, "lemedia-dons"
 set :repo_url, "git@github.com:sghribi/lemedia-dons.git"
+set :nvm_type, :user
+set :nvm_node, 'v8.9.4'
+set :nvm_map_bins, %w{node npm}
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
