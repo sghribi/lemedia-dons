@@ -3,6 +3,7 @@ lock "~> 3.10.1"
 
 set :application, "lemedia-dons"
 set :repo_url, "git@github.com:sghribi/lemedia-dons.git"
+set :npm_flags, '--silent --no-progress'
 set :nvm_type, :user
 set :nvm_node, 'v8.9.4'
 set :nvm_map_bins, %w{node npm}
@@ -25,6 +26,7 @@ set :nvm_map_bins, %w{node npm}
 
 # Default value for linked_dirs is []
 # append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
+append :linked_dirs, "node_modules"
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
