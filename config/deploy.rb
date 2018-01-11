@@ -46,7 +46,9 @@ namespace :deploy do
     on roles fetch(:npm_roles) do
       within fetch(:npm_target_path, release_path) do
         with fetch(:npm_env_variables, {}) do
-          execute :npm, 'run build'
+          execute :npm, 'remove webpack'
+          execute :npm, 'install --save-dev @angular/cli@latest'
+          execute :npm, 'run build --env="$NODE_ENV"'
         end
       end
     end
