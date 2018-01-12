@@ -29,3 +29,9 @@
     display: none;
   }
 }
+
+.va-middle /deep/ {
+  > * {
+    vertical-align: middle;
+  }
+}

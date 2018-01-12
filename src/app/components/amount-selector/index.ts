@@ -19,7 +19,11 @@ export class AmountSelectorComponent implements OnInit {
   amountForm: FormGroup;
 
   static computeAmountAfterTaxCredit(initialAmount: number) {
-    return parseInt(initialAmount * 0.34, 10);
+    return parseInt((initialAmount * 0.34).toString(), 10);
+  }
+
+  static convertToIntegerAmount(amount) {
+    return parseInt(Math.max(parseFloat(amount.replace(',', '.').replace(' ', '')) * 100, 0).toString(), 10);
   }
 
   ngOnInit() {
@@ -35,7 +39,7 @@ export class AmountSelectorComponent implements OnInit {
   }
 
   onOtherAmountChange(otherAmount) {
-    this.amount = parseInt(Math.max(parseFloat(otherAmount.replace(',', '.').replace(' ', '')) * 100, 0).toString(), 10);
+    this.amount = AmountSelectorComponent.convertToIntegerAmount(otherAmount);
     this.updateAmounts();
   }
 
@@ -43,8 +47,12 @@ export class AmountSelectorComponent implements OnInit {
     return this.amount === quickAmount;
   }
 
+  isOtherAmountChecked(otherAmount) {
+    return otherAmount && AmountSelectorComponent.QUICK_AMOUNTS.indexOf(AmountSelectorComponent.convertToIntegerAmount(otherAmount)) <= -1;
+  }
+
   updateAmounts() {
-    this.amountForm.setValue(Math.max(this.amount, 0));
+    this.amountForm.patchValue({amount: Math.max(this.amount, 0).toString()});
     this.amountAfterTaxCredit = AmountSelectorComponent.computeAmountAfterTaxCredit(this.amount);
   }
 }

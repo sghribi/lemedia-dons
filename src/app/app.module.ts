@@ -27,7 +27,7 @@ import {AmountSelectorComponent} from './components/amount-selector';
     HomeComponent,
     DonationComponent,
     CheckInfoComponent,
-    CheckInfoDialogComponent
+    CheckInfoDialogComponent,
     AmountSelectorComponent,
   ],
   imports: [

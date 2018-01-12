@@ -4,7 +4,9 @@
     {{quickAmount/100}} €
   </mat-button-toggle>
 
+  <mat-button-toggle [checked]="isOtherAmountChecked(otherAmount)">
     Autre montant
     <input matInput placeholder="Autre montant" name="value" [(ngModel)]="otherAmount" (change)="onOtherAmountChange(otherAmount)" />
+  </mat-button-toggle>
 
 <p>Soit {{amountAfterTaxCredit/100}}€ après réduction d'impôt.</p>
