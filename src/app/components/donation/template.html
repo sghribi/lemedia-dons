@@ -1,11 +1,9 @@
-<mat-horizontal-stepper [linear]="true">
+<mat-vertical-stepper [linear]="true">
   <mat-step [stepControl]="amountFormGroup">
     <form [formGroup]="amountFormGroup">
       <ng-template matStepLabel>Je choisis le montant</ng-template>
 
-
       <app-amount-selector [amountForm]="amountFormGroup"></app-amount-selector>
-
       Je donne {{amountFormGroup.controls.amount.value/100}} €.
 
       <mat-card-actions>
@@ -22,7 +20,7 @@
       </mat-form-field>
       <div>
         <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
+        <button mat-button matStepperNext color="primary">Continuer</button>
       </div>
     </form>
   </mat-step>
@@ -33,4 +31,4 @@
       <button mat-button matStepperPrevious>Back</button>
     </div>
   </mat-step>
-</mat-horizontal-stepper>
+</mat-vertical-stepper>
