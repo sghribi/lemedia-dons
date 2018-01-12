@@ -1,0 +1,31 @@
+.navbar-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 8px 16px;
+  background-color: #040e7a;
+  color: white;
+
+  > .mat-button {
+    font-size: 18px;
+    &:last-child {
+      margin-left: auto;
+    }
+  }
+}
+
+.flex-spacer {
+  flex-grow: 1;
+}
+
+.lemedia-logo {
+  height: 26px;
+  margin: 0 4px 3px 0;
+  vertical-align: middle;
+}
+
+.lemedia-website-link {
+  @media (max-width: 720px) {
+    display: none;
+  }
+}

@@ -1,0 +1,10 @@
+<p>Choisissez le montant de votre don :</p>
+
+  <mat-button-toggle *ngFor="let quickAmount of quickAmounts" (click)="onQuickAmountClick(quickAmount)" [checked]="isQuickAmountChecked(quickAmount)">
+    {{quickAmount/100}} €
+  </mat-button-toggle>
+
+    Autre montant
+    <input matInput placeholder="Autre montant" name="value" [(ngModel)]="otherAmount" (change)="onOtherAmountChange(otherAmount)" />
+
+<p>Soit {{amountAfterTaxCredit/100}}€ après réduction d'impôt.</p>

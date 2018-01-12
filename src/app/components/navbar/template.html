@@ -1,0 +1,29 @@
+<nav class="navbar-header" color="primary">
+  <a mat-button
+     href="https://lemediatv.fr"
+     class="lemedia-website-link"
+     rel="nofollow"
+  >
+    Retour site Le Média
+    <i class="material-icons">arrow_back</i>
+  </a>
+
+  <div class="flex-spacer"></div>
+
+  <a mat-button
+     [routerLink]="'/'"
+     routerLinkActive
+  >
+    <img class="lemedia-logo"
+         src="../../../assets/img/Le-Média.png"
+         alt="Le Média">
+    <span>Plateforme de dons</span>
+  </a>
+
+  <div class="flex-spacer"></div>
+
+  <mat-basic-chip>
+    <i class="material-icons">lock</i>
+    Paiement sécurisé
+  </mat-basic-chip>
+</nav>
