@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormGroup} from '@angular/forms';
 import {countries} from '../../utils/countries';
 
@@ -16,25 +16,27 @@ export class UserInfoFormComponent implements OnInit {
   public static readonly DEFAULT_COUNTRY = 'FR';
 
   @Input()
+  step: number;
+  @Output()
+  stepChange = new EventEmitter<number>();
+
+
+  @Input()
   userInfoForm: FormGroup;
   countries: Country[];
-  step: number;
 
   ngOnInit() {
     this.countries = countries;
-    this.step = 0;
   }
 
   setStep(index: number) {
     this.step = index;
+    this.stepChange.emit(this.step);
   }
 
   nextStep() {
     this.step++;
-  }
-
-  previousStep() {
-    this.step--;
+    this.stepChange.emit(this.step);
   }
 
   getEmailErrorMessage() {

@@ -1,0 +1,6 @@
+<div class="center">
+  <button class="main-button" mat-raised-button matStepperNext color="primary" (click)="pay()" [disabled]="paying" *ngIf="donationData">
+    <i class="material-icons">credit_card</i>
+    Régler {{donationData.amount/100}}€ par carte bancaire
+  </button>
+</div>

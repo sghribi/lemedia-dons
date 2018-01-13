@@ -1,3 +1,13 @@
+import {Pipe, PipeTransform} from '@angular/core';
+import {find} from 'lodash';
+
+@Pipe({name: 'country'})
+export class CountryPipe implements PipeTransform {
+  transform(value: string): string {
+    return find(countries, {value: value}).text || '';
+  }
+}
+
 export const countries = [
   {
     value: 'AF', text: 'Afghanistan'

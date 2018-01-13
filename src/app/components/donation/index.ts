@@ -5,6 +5,18 @@ import {parse} from 'libphonenumber-js';
 import {UserInfoFormComponent} from '../user-info-form';
 import {isEmpty} from 'lodash';
 
+export interface IDonation {
+  amount: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phoneNumber: string;
+  companyName?: string;
+  address: string;
+  city: string;
+  zipCode: number;
+  country: string;
+}
 
 @Component({
   selector: 'app-donation',
@@ -16,8 +28,10 @@ export class DonationComponent implements OnInit {
 
   amountFormGroup: FormGroup;
   userInfoFormGroup: FormGroup;
+  userInfoStep: number;
 
   ngOnInit() {
+    this.userInfoStep = 0;
     this.amountFormGroup = this.formBuilder.group({
       amount: [AmountSelectorComponent.DEFAULT_AMOUNT,  Validators.compose([Validators.required, Validators.min(100)])]
     });
@@ -39,6 +53,10 @@ export class DonationComponent implements OnInit {
     });
   }
 
+  isUserInfoCompleted() {
+    return this.userInfoStep === 2 && this.userInfoFormGroup.valid;
+  }
+
   validatePhoneNumber(control: FormControl) {
     if (isEmpty(parse(control.value, {country: {'default': 'FR'}}))) {
       return {
@@ -55,5 +73,24 @@ export class DonationComponent implements OnInit {
     }
 
     return Validators.compose([Validators.required, Validators.min(2)])(control);
+  }
+
+  getDonationData(): IDonation|null {
+    if (!this.amountFormGroup.valid || !this.userInfoFormGroup.valid) {
+      return null;
+    }
+
+    return {
+      amount: this.amountFormGroup.get('amount').value,
+      firstName: this.userInfoFormGroup.get('personalData').get('firstName').value,
+      lastName: this.userInfoFormGroup.get('personalData').get('lastName').value,
+      email: this.userInfoFormGroup.get('personalData').get('email').value,
+      phoneNumber:  this.userInfoFormGroup.get('personalData').get('phoneNumber').value,
+      companyName: this.userInfoFormGroup.get('personalData').get('isCompany').value ? this.userInfoFormGroup.get('personalData').get('companyName').value : '',
+      address: this.userInfoFormGroup.get('locationData').get('address').value,
+      city: this.userInfoFormGroup.get('locationData').get('city').value,
+      zipCode: this.userInfoFormGroup.get('locationData').get('zipCode').value,
+      country: this.userInfoFormGroup.get('locationData').get('country').value,
+    };
   }
 }

@@ -11,18 +11,15 @@
   <mat-step [stepControl]="userInfoFormGroup">
     <form [formGroup]="userInfoFormGroup">
       <ng-template matStepLabel>Je renseigne mes coordonnées</ng-template>
-      <app-user-info-form [userInfoForm]="userInfoFormGroup"></app-user-info-form>
+      <app-user-info-form [userInfoForm]="userInfoFormGroup" [(step)]="userInfoStep"></app-user-info-form>
 
       <mat-card-actions class="actions">
-        <button class="main-button" mat-button mat-raised-button matStepperNext color="primary" *ngIf="userInfoFormGroup.valid">Je confirme mes informations</button>
+        <button class="main-button" mat-button mat-raised-button matStepperNext color="primary" *ngIf="isUserInfoCompleted()">Je confirme mes informations</button>
       </mat-card-actions>
     </form>
   </mat-step>
   <mat-step>
-    <ng-template matStepLabel>Je paie</ng-template>
-    You are now done.
-    <div>
-      <button mat-button matStepperPrevious>Back</button>
-    </div>
+    <ng-template matStepLabel>Je paie par carte bancaire</ng-template>
+    <app-payment [donationData]="getDonationData()"></app-payment>
   </mat-step>
 </mat-vertical-stepper>

@@ -22,6 +22,8 @@ import {CheckInfoDialogComponent} from './components/check-info/dialog';
 import {AmountSelectorComponent} from './components/amount-selector';
 import {UserInfoFormComponent} from './components/user-info-form';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import {CountryPipe} from './utils/countries';
+import {PaymentComponent} from './components/payment';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     CheckInfoDialogComponent,
     AmountSelectorComponent,
     UserInfoFormComponent,
+    CountryPipe,
+    PaymentComponent,
   ],
   imports: [
     BrowserModule,
