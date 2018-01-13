@@ -14,6 +14,7 @@ export class AmountSelectorComponent implements OnInit {
   amountAfterTaxCredit: number;
   otherAmount: number;
   quickAmounts: number[];
+  otherAmountFocused: boolean;
 
   @Input()
   amountForm: FormGroup;
@@ -23,16 +24,17 @@ export class AmountSelectorComponent implements OnInit {
   }
 
   static convertToIntegerAmount(amount) {
-    return parseInt(Math.max(parseFloat(amount.replace(',', '.').replace(' ', '')) * 100, 0).toString(), 10);
+    return parseInt(Math.max(amount * 100, 0).toString(), 10);
   }
 
   ngOnInit() {
+    this.otherAmountFocused = false;
     this.amount = AmountSelectorComponent.DEFAULT_AMOUNT;
     this.quickAmounts = AmountSelectorComponent.QUICK_AMOUNTS;
     this.updateAmounts();
   }
 
-  onQuickAmountClick(amount) {
+  onQuickAmountClick($event, amount) {
     this.amount = amount;
     this.otherAmount = null;
     this.updateAmounts();
@@ -44,11 +46,11 @@ export class AmountSelectorComponent implements OnInit {
   }
 
   isQuickAmountChecked(quickAmount) {
-    return this.amount === quickAmount;
+    return (!this.otherAmountFocused || (this.otherAmountFocused && !this.otherAmount)) && !this.otherAmount && (this.amount === quickAmount);
   }
 
-  isOtherAmountChecked(otherAmount) {
-    return otherAmount && AmountSelectorComponent.QUICK_AMOUNTS.indexOf(AmountSelectorComponent.convertToIntegerAmount(otherAmount)) <= -1;
+  isOtherAmountInputChecked(otherAmount) {
+    return otherAmount;
   }
 
   updateAmounts() {

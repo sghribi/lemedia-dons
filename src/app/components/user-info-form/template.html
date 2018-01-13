@@ -1,0 +1,54 @@
+<mat-card class="background-grey">
+  <mat-card-content>
+    <p class="explanation">Veuillez compléter les informations suivantes :</p>
+
+    <form [formGroup]="userInfoForm" class="user-info-form">
+      <mat-form-field>
+        <input type="email" matInput formControlName="email" placeholder="Votre adresse email" required autofocus>
+        <mat-error *ngIf="userInfoForm.controls.email.invalid">{{getEmailErrorMessage()}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput formControlName="socialReason" placeholder="Raison sociale" required>
+        <mat-error *ngIf="userInfoForm.controls.socialReason.invalid">{{getSocialReasonErrorMessage()}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput formControlName="firstName" placeholder="Votre prénom" required>
+        <mat-error *ngIf="userInfoForm.controls.firstName.invalid">{{getFirstNameErrorMessage()}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput formControlName="lastName" placeholder="Votre nom de famille" required>
+        <mat-error *ngIf="userInfoForm.controls.lastName.invalid">{{getLastNameErrorMessage()}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput formControlName="phoneNumber" placeholder="Votre numéro de téléphone" required>
+        <mat-error *ngIf="userInfoForm.controls.phoneNumber.invalid">{{getPhoneNumberErrorMessage()}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <textarea matInput matTextareaAutosize matAutosizeMinRows="1" matAutosizeMaxRows="3" formControlName="address" placeholder="Votre adresse postale" required></textarea>
+        <mat-error *ngIf="userInfoForm.controls.lastName.invalid">{{getAddressErrorMessage()}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input type="tel" matInput formControlName="zipCode" placeholder="Votre code postal" required>
+        <mat-error *ngIf="userInfoForm.controls.zipCode.invalid">{{getZipCodeErrorMessage()}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput formControlName="city" placeholder="Votre ville" required>
+        <mat-error *ngIf="userInfoForm.controls.city.invalid">{{getCityErrorMessage()}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select placeholder="Votre pays" formControlName="country" required>
+          <mat-option *ngFor="let country of countries" [value]="country.value">{{country.text}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="userInfoForm.controls.country.invalid">{{getCountryErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+</mat-card>

@@ -1,12 +1,30 @@
-<p>Choisissez le montant de votre don :</p>
+<form [formGroup]="amountForm">
+  <input formControlName="amount" [(ngModel)]="amount" type="hidden" required />
+</form>
 
-  <mat-button-toggle *ngFor="let quickAmount of quickAmounts" (click)="onQuickAmountClick(quickAmount)" [checked]="isQuickAmountChecked(quickAmount)">
-    {{quickAmount/100}} €
-  </mat-button-toggle>
+<mat-card class="background-grey">
+  <mat-card-content class="center">
+    <mat-button-toggle *ngFor="let quickAmount of quickAmounts" (mousedown)="onQuickAmountClick($event, quickAmount)" [checked]="isQuickAmountChecked(quickAmount)" color="accent">
+      {{quickAmount/100}} €
+    </mat-button-toggle>
+  </mat-card-content>
 
-  <mat-button-toggle [checked]="isOtherAmountChecked(otherAmount)">
-    Autre montant
-    <input matInput placeholder="Autre montant" name="value" [(ngModel)]="otherAmount" (change)="onOtherAmountChange(otherAmount)" />
-  </mat-button-toggle>
+  <mat-card-content class="center">
+    <div class="explanation">
+      Ou je choisis un montant libre :
+    </div>
 
-<p>Soit {{amountAfterTaxCredit/100}}€ après réduction d'impôt.</p>
+    <mat-button-toggle [checked]="isOtherAmountInputChecked(otherAmount)" class="other-amount">
+      <input type="number" autocomplete="off" matInput placeholder="Autre montant" name="value" [(ngModel)]="otherAmount" (change)="onOtherAmountChange(otherAmount)" (focus)="otherAmountFocused = true" (blur)="otherAmountFocused = false" />
+      <span matSuffix="">€</span>
+    </mat-button-toggle>
+
+    <mat-error *ngIf="amountForm.controls.amount.hasError('min') && !amountForm.controls.amount.hasError('required')">
+      Le don doit être supérieur à 1€.
+    </mat-error>
+  </mat-card-content>
+</mat-card>
+
+<p class="donation-summary">
+  Je fais un don <strong>{{amount/100}}€</strong>. Cela me coûte <strong>{{amountAfterTaxCredit/100}}€</strong> après réduction d'impôt.
+</p>

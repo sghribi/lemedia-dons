@@ -1,0 +1,11 @@
+.user-info-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-info-form > * {
+  width: 100%;
+  max-width: 350px;
+  margin-left: auto;
+  margin-right: auto;
+}

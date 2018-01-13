@@ -1,0 +1,44 @@
+.mat-button-toggle {
+  margin: 5px;
+  font-size: 18px;
+}
+
+.mat-card-content {
+  margin-bottom: 30px;
+}
+
+.mat-button-toggle-label-content /deep/ {
+  color: black !important;
+}
+
+.other-amount /deep/ {
+  background-color: white;
+  max-width: 170px;
+  .mat-button-toggle-label-content {
+    color: black !important;
+    margin-right: 10px;
+  }
+  input {
+    text-align: center;
+  }
+}
+
+.other-amount {
+  &.mat-button-toggle-checked {
+    background-color: #ff4081 !important;
+    input {
+      color: white !important;
+    }
+  }
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.donation-summary {
+  text-align: center;
+  font-size: 16px;
+}

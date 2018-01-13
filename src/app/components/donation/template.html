@@ -1,27 +1,22 @@
 <mat-vertical-stepper [linear]="true">
   <mat-step [stepControl]="amountFormGroup">
     <form [formGroup]="amountFormGroup">
-      <ng-template matStepLabel>Je choisis le montant</ng-template>
-
+      <ng-template matStepLabel>Je choisis le montant de mon don</ng-template>
       <app-amount-selector [amountForm]="amountFormGroup"></app-amount-selector>
-      Je donne {{amountFormGroup.controls.amount.value/100}} €.
-
-      <mat-card-actions>
-        <app-check-info></app-check-info>
-        <button class="main-button" mat-raised-button matStepperNext color="primary">Continuer</button>
+      <mat-card-actions class="actions">
+        <button class="main-button" mat-raised-button matStepperNext color="primary" [disabled]="!amountFormGroup.valid">Continuer</button>
       </mat-card-actions>
     </form>
   </mat-step>
-  <mat-step [stepControl]="secondFormGroup">
-    <form [formGroup]="secondFormGroup">
+  <mat-step [stepControl]="userInfoFormGroup">
+    <form [formGroup]="userInfoFormGroup">
       <ng-template matStepLabel>Je renseigne mes coordonnées</ng-template>
-      <mat-form-field>
-        <input matInput placeholder="Address" formControlName="secondCtrl" required>
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext color="primary">Continuer</button>
-      </div>
+      <app-user-info-form [userInfoForm]="userInfoFormGroup"></app-user-info-form>
+
+      <mat-card-actions class="actions">
+        <button mat-button matStepperPrevious>Précédent</button>
+        <button mat-button matStepperNext color="primary" [disabled]="!userInfoFormGroup.valid">Continuer</button>
+      </mat-card-actions>
     </form>
   </mat-step>
   <mat-step>

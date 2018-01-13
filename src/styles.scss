@@ -26,3 +26,39 @@ $candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-
 body {
   background-color: #fafafa;
 }
+
+@mixin mix-app-theme($app-theme) {
+  $primary: map-get($app-theme, primary);
+  $accent: map-get($app-theme, accent);
+
+  .mat-button-toggle {
+    background-color: mat-color($primary);
+    color: mat-color($primary, default-contrast);
+  }
+
+  .mat-button-toggle-checked {
+    background-color: mat-color($accent);
+    color: mat-color($accent, default-contrast);
+  }
+}
+
+// Include the mixin
+@include mix-app-theme($candy-app-theme);
+
+.center {
+  text-align: center;
+}
+
+.pull-right {
+  float: right;
+}
+
+.background-grey {
+  background-color: #fafafa;
+}
+
+.explanation {
+  font-weight: bold;
+  margin-bottom: 10px;
+  margin-left: 5px;
+}
