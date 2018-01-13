@@ -46,11 +46,11 @@ body {
 @include mix-app-theme($candy-app-theme);
 
 .center {
-  text-align: center;
+  text-align: center !important;
 }
 
 .pull-right {
-  float: right;
+  float: right !important;
 }
 
 .background-grey {

@@ -1,54 +1,105 @@
 <mat-card class="background-grey">
   <mat-card-content>
     <p class="explanation">Veuillez compléter les informations suivantes :</p>
+     <mat-accordion class="user-info-form-accordion">
+        <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle="true" class="user-panel">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Qui êtes-vous ?
+            </mat-panel-title>
+            <mat-panel-description>
+              Renseignez vos informations personnelles.
+              <mat-icon>account_circle</mat-icon>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
 
-    <form [formGroup]="userInfoForm" class="user-info-form">
-      <mat-form-field>
-        <input type="email" matInput formControlName="email" placeholder="Votre adresse email" required autofocus>
-        <mat-error *ngIf="userInfoForm.controls.email.invalid">{{getEmailErrorMessage()}}</mat-error>
-      </mat-form-field>
+          <form fxFlex fxLayout="column" fxLayoutGap="10px">
+            
+            <div fxLayout="row" fxLayoutGap="30px" fxLayout.lt-md="column" fxLayoutGap.lt-md="0px">
+              <mat-form-field fxFill fxFlex="calc(50% - 30px)" fxFlex.lt-md="100%">
+                <input type="email" matInput [formControl]="userInfoForm.controls.personalData.controls.email" name="email" placeholder="Votre adresse email" required>
+                <mat-icon matSuffix>email</mat-icon>
+                <mat-error *ngIf="userInfoForm.controls.personalData.controls.email.invalid">{{getEmailErrorMessage()}}</mat-error>
+              </mat-form-field>
 
-      <mat-form-field>
-        <input matInput formControlName="socialReason" placeholder="Raison sociale" required>
-        <mat-error *ngIf="userInfoForm.controls.socialReason.invalid">{{getSocialReasonErrorMessage()}}</mat-error>
-      </mat-form-field>
+              <mat-form-field fxFill fxFlex="calc(50% - 30px)" fxFlex.lt-md="100%">
+                <input matInput [formControl]="userInfoForm.controls.personalData.controls.phoneNumber" name="phoneNumber" placeholder="Votre numéro de téléphone" required>
+                <mat-icon matSuffix>phone</mat-icon>
+                <mat-error *ngIf="userInfoForm.controls.personalData.controls.phoneNumber.invalid">{{getPhoneNumberErrorMessage()}}</mat-error>
+              </mat-form-field>
+            </div>
 
-      <mat-form-field>
-        <input matInput formControlName="firstName" placeholder="Votre prénom" required>
-        <mat-error *ngIf="userInfoForm.controls.firstName.invalid">{{getFirstNameErrorMessage()}}</mat-error>
-      </mat-form-field>
+            <div fxLayout="row" fxLayoutGap="30px" fxLayout.lt-md="column" fxLayoutGap.lt-md="0px">
+              <mat-form-field fxFill fxFlex="calc(50% - 30px)" fxFlex.lt-md="100%">
+                <input matInput [formControl]="userInfoForm.controls.personalData.controls.lastName" name="lastName" placeholder="Votre nom de famille" required>
+                <mat-icon matSuffix>perm_identity</mat-icon>
+                <mat-error *ngIf="userInfoForm.controls.personalData.controls.lastName.invalid">{{getLastNameErrorMessage()}}</mat-error>
+              </mat-form-field>
+              <mat-form-field fxFill fxFlex="calc(50% - 30px)" fxFlex.lt-md="100%">
+                <input matInput [formControl]="userInfoForm.controls.personalData.controls.firstName" name="firstName" placeholder="Votre prénom" required>
+                <mat-icon matSuffix>perm_identity</mat-icon>
+                <mat-error *ngIf="userInfoForm.controls.personalData.controls.firstName.invalid">{{getFirstNameErrorMessage()}}</mat-error>
+              </mat-form-field>
+            </div>
 
-      <mat-form-field>
-        <input matInput formControlName="lastName" placeholder="Votre nom de famille" required>
-        <mat-error *ngIf="userInfoForm.controls.lastName.invalid">{{getLastNameErrorMessage()}}</mat-error>
-      </mat-form-field>
+            <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="30px" fxLayout.lt-md="column" fxLayoutGap.lt-md="0px">
+              <mat-checkbox fxFill fxFlex="calc(50% - 30px)" fxFlex.lt-md="100%" [formControl]="userInfoForm.controls.personalData.controls.isCompany">Je donne au nom d'une entreprise ?</mat-checkbox>
+              <mat-form-field fxFill fxFlex="calc(50% - 30px)"  fxFlex.lt-md="100%" *ngIf="userInfoForm.controls.personalData.controls.isCompany.value">
+                <input matInput [formControl]="userInfoForm.controls.personalData.controls.socialReason" name="socialReason" placeholder="Raison sociale" required>
+                <mat-icon matSuffix>business</mat-icon>
+                <mat-error *ngIf="userInfoForm.controls.personalData.controls.socialReason.invalid">{{getSocialReasonErrorMessage()}}</mat-error>
+              </mat-form-field>
+            </div>
+          </form>
 
-      <mat-form-field>
-        <input matInput formControlName="phoneNumber" placeholder="Votre numéro de téléphone" required>
-        <mat-error *ngIf="userInfoForm.controls.phoneNumber.invalid">{{getPhoneNumberErrorMessage()}}</mat-error>
-      </mat-form-field>
+          <mat-action-row class="actions">
+            <button mat-button mat-raised-button color="primary" (click)="nextStep()" [disabled]="!userInfoForm.controls.personalData.valid">Continuer</button>
+          </mat-action-row>
+        </mat-expansion-panel>
 
-      <mat-form-field>
-        <textarea matInput matTextareaAutosize matAutosizeMinRows="1" matAutosizeMaxRows="3" formControlName="address" placeholder="Votre adresse postale" required></textarea>
-        <mat-error *ngIf="userInfoForm.controls.lastName.invalid">{{getAddressErrorMessage()}}</mat-error>
-      </mat-form-field>
+        <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle="true" [disabled]="!userInfoForm.controls.personalData.valid">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Où résidez-vous ?
+            </mat-panel-title>
+            <mat-panel-description>
+              Renseignez votre adresse postale
+              <mat-icon>map</mat-icon>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
 
-      <mat-form-field>
-        <input type="tel" matInput formControlName="zipCode" placeholder="Votre code postal" required>
-        <mat-error *ngIf="userInfoForm.controls.zipCode.invalid">{{getZipCodeErrorMessage()}}</mat-error>
-      </mat-form-field>
 
-      <mat-form-field>
-        <input matInput formControlName="city" placeholder="Votre ville" required>
-        <mat-error *ngIf="userInfoForm.controls.city.invalid">{{getCityErrorMessage()}}</mat-error>
-      </mat-form-field>
+          <mat-form-field>
+            <input matInput [formControl]="userInfoForm.controls.locationData.controls.address" placeholder="Votre adresse postale" required>
+            <mat-icon matSuffix>home</mat-icon>
+            <mat-error *ngIf="userInfoForm.controls.locationData.controls.address.invalid">{{getAddressErrorMessage()}}</mat-error>
+          </mat-form-field>
 
-      <mat-form-field>
-        <mat-select placeholder="Votre pays" formControlName="country" required>
-          <mat-option *ngFor="let country of countries" [value]="country.value">{{country.text}}</mat-option>
-        </mat-select>
-        <mat-error *ngIf="userInfoForm.controls.country.invalid">{{getCountryErrorMessage()}}</mat-error>
-      </mat-form-field>
-    </form>
+          <mat-form-field>
+            <input type="tel" matInput [formControl]="userInfoForm.controls.locationData.controls.zipCode" placeholder="Votre code postal" required>
+            <mat-icon matSuffix>location_city</mat-icon>
+            <mat-error *ngIf="userInfoForm.controls.locationData.controls.zipCode.invalid">{{getZipCodeErrorMessage()}}</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput [formControl]="userInfoForm.controls.locationData.controls.city" placeholder="Votre ville" required>
+            <mat-icon matSuffix>location_city</mat-icon>
+            <mat-error *ngIf="userInfoForm.controls.locationData.controls.city.invalid">{{getCityErrorMessage()}}</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-select placeholder="Votre pays" [formControl]="userInfoForm.controls.locationData.controls.country" required>
+              <mat-icon matSuffix>map</mat-icon>
+              <mat-option *ngFor="let country of countries" [value]="country.value">{{country.text}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="userInfoForm.controls.locationData.controls.country.invalid">{{getCountryErrorMessage()}}</mat-error>
+          </mat-form-field>
+
+          <mat-action-row>
+            <button mat-button color="primary" (click)="prevStep()">Précédent</button>
+            <button mat-button color="accent" (click)="nextStep()">Continuer</button>
+          </mat-action-row>
+        </mat-expansion-panel>
+      </mat-accordion>
   </mat-card-content>
 </mat-card>

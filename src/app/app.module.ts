@@ -4,7 +4,8 @@ import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
   MatButtonModule, MatButtonToggleModule, MatCardModule, MatCheckboxModule, MatChipsModule, MatCommonModule, MatDialogModule,
-  MatFormFieldModule, MatIconModule,
+  MatExpansionModule,
+  MatFormFieldModule, MatGridListModule, MatIconModule,
   MatInputModule, MatMenuModule, MatOptionModule, MatSelectModule,
   MatStepperModule,
   MatTabsModule,
@@ -20,6 +21,7 @@ import {CheckInfoComponent} from './components/check-info';
 import {CheckInfoDialogComponent} from './components/check-info/dialog';
 import {AmountSelectorComponent} from './components/amount-selector';
 import {UserInfoFormComponent} from './components/user-info-form';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -54,6 +56,9 @@ import {UserInfoFormComponent} from './components/user-info-form';
     MatDialogModule,
     MatSelectModule,
     MatOptionModule,
+    MatExpansionModule,
+    MatGridListModule,
+    FlexLayoutModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -18,60 +18,74 @@ export class UserInfoFormComponent implements OnInit {
   @Input()
   userInfoForm: FormGroup;
   countries: Country[];
+  step: number;
 
   ngOnInit() {
     this.countries = countries;
+    this.step = 0;
+  }
+
+  setStep(index: number) {
+    this.step = index;
+  }
+
+  nextStep() {
+    this.step++;
+  }
+
+  previousStep() {
+    this.step--;
   }
 
   getEmailErrorMessage() {
-    return this.userInfoForm.controls.email.hasError('required') ? 'Vous devez saisir votre adresse email.' :
-      this.userInfoForm.controls.email.hasError('email') ? 'L\'adresse email saisie est invalide.' :
+    return this.userInfoForm.get('personalData').get('email').hasError('required') ? 'Veuillez saisir votre adresse email.' :
+      this.userInfoForm.get('personalData').get('email').hasError('email') ? 'L\'adresse email saisie est invalide.' :
         '';
   }
 
   getSocialReasonErrorMessage() {
-    return this.userInfoForm.controls.socialReason.hasError('required') ? 'Vous devez saisir la raison sociale.' :
-      this.userInfoForm.controls.socialReason.hasError('min') ? 'Le nom de famille saisi est trop court.' :
+    return this.userInfoForm.get('personalData').get('socialReason').hasError('required') ? 'Vous devez saisir la raison sociale.' :
+      this.userInfoForm.get('personalData').get('socialReason').hasError('min') ? 'Le nom de famille saisi est trop court.' :
         '';
   }
 
   getFirstNameErrorMessage() {
-    return this.userInfoForm.controls.firstName.hasError('required') ? 'Vous devez saisir votre prénom.' :
-      this.userInfoForm.controls.firstName.hasError('min') ? 'Le prénom saisi est trop court.' :
+    return this.userInfoForm.get('personalData').get('firstName').hasError('required') ? 'Vous devez saisir votre prénom.' :
+      this.userInfoForm.get('personalData').get('firstName').hasError('min') ? 'Le prénom saisi est trop court.' :
         '';
   }
 
   getLastNameErrorMessage() {
-    return this.userInfoForm.controls.lastName.hasError('required') ? 'Vous devez saisir votre nom de famille.' :
-      this.userInfoForm.controls.lastName.hasError('min') ? 'Le nom de famille saisi est trop court.' :
+    return this.userInfoForm.get('personalData').get('lastName').hasError('required') ? 'Vous devez saisir votre nom de famille.' :
+      this.userInfoForm.get('personalData').get('lastName').hasError('min') ? 'Le nom de famille saisi est trop court.' :
         '';
   }
 
   getPhoneNumberErrorMessage() {
-    return this.userInfoForm.controls.phoneNumber.hasError('required') ? 'Vous devez saisir votre numéro de téléphone.' :
-      this.userInfoForm.controls.phoneNumber.hasError('phoneNumber') ? 'Le numéro de téléphone saisi est incorrect.' :
+    return this.userInfoForm.get('personalData').get('phoneNumber').hasError('required') ? 'Vous devez saisir votre numéro de téléphone.' :
+      this.userInfoForm.get('personalData').get('phoneNumber').hasError('phoneNumber') ? 'Le numéro de téléphone saisi est incorrect.' :
         '';
   }
 
   getAddressErrorMessage() {
-    return this.userInfoForm.controls.address.hasError('required') ? 'Vous devez saisir votre adresse postale.' :
-      this.userInfoForm.controls.address.hasError('min') ? 'L\'adresse saisie est trop courte.' :
+    return this.userInfoForm.get('locationData').get('address').hasError('required') ? 'Vous devez saisir votre adresse postale.' :
+      this.userInfoForm.get('locationData').get('address').hasError('min') ? 'L\'adresse saisie est trop courte.' :
         '';
   }
 
   getZipCodeErrorMessage() {
-    return this.userInfoForm.controls.zipCode.hasError('required') ? 'Vous devez saisir votre code postal.' :
-      this.userInfoForm.controls.zipCode.hasError('pattern') ? 'Le code postal saisi a un format incorrect.' :
+    return this.userInfoForm.get('locationData').get('zipCode') .hasError('required') ? 'Vous devez saisir votre code postal.' :
+      this.userInfoForm.get('locationData').get('zipCode').hasError('pattern') ? 'Le code postal saisi a un format incorrect.' :
         '';
   }
 
   getCityErrorMessage() {
-    return this.userInfoForm.controls.city.hasError('required') ? 'Vous devez saisir votre ville.' :
-      this.userInfoForm.controls.city.hasError('min') ? 'La ville saisie est trop courte.' :
+    return this.userInfoForm.get('locationData').get('city').hasError('required') ? 'Vous devez saisir votre ville.' :
+      this.userInfoForm.get('locationData').get('city').hasError('min') ? 'La ville saisie est trop courte.' :
         '';
   }
 
   getCountryErrorMessage() {
-    return this.userInfoForm.controls.country.hasError('required') ? 'Vous devez saisir votre pays.' : '';
+    return this.userInfoForm.get('locationData').get('country').hasError('required') ? 'Vous devez saisir votre pays.' : '';
   }
 }

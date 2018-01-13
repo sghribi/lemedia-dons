@@ -14,8 +14,7 @@
       <app-user-info-form [userInfoForm]="userInfoFormGroup"></app-user-info-form>
 
       <mat-card-actions class="actions">
-        <button mat-button matStepperPrevious>Précédent</button>
-        <button mat-button matStepperNext color="primary" [disabled]="!userInfoFormGroup.valid">Continuer</button>
+        <button class="main-button" mat-button mat-raised-button matStepperNext color="primary" *ngIf="userInfoFormGroup.valid">Je confirme mes informations</button>
       </mat-card-actions>
     </form>
   </mat-step>

@@ -22,16 +22,20 @@ export class DonationComponent implements OnInit {
       amount: [AmountSelectorComponent.DEFAULT_AMOUNT,  Validators.compose([Validators.required, Validators.min(100)])]
     });
     this.userInfoFormGroup = this.formBuilder.group({
-      email: ['', Validators.compose([Validators.required, Validators.email])],
-      isCompany: [false],
-      socialReason: ['', Validators.compose([Validators.required, Validators.min(2)])],
-      firstName: ['', Validators.compose([Validators.required, Validators.min(2)])],
-      lastName: ['', Validators.compose([Validators.required, Validators.min(2)])],
-      phoneNumber: ['', Validators.compose([Validators.required, this.validatePhoneNumber])],
-      address: ['', Validators.compose([Validators.required, Validators.min(5)])],
-      zipCode: ['', Validators.compose([Validators.required, Validators.pattern('[0-9]{4,5}')])],
-      city: ['', Validators.compose([Validators.required, Validators.min(2)])],
-      country: [UserInfoFormComponent.DEFAULT_COUNTRY, Validators.required],
+      personalData: this.formBuilder.group({
+        socialReason: ['', this.validateSocialReason],
+        firstName: ['', Validators.compose([Validators.required, Validators.min(2)])],
+        lastName: ['', Validators.compose([Validators.required, Validators.min(2)])],
+        phoneNumber: ['', Validators.compose([Validators.required, this.validatePhoneNumber])],
+        isCompany: [false],
+        email: ['', Validators.compose([Validators.required, Validators.email])],
+      }),
+      locationData: this.formBuilder.group({
+        address: ['', Validators.compose([Validators.required, Validators.min(5)])],
+        zipCode: ['', Validators.compose([Validators.required, Validators.pattern('[0-9]{4,5}')])],
+        city: ['', Validators.compose([Validators.required, Validators.min(2)])],
+        country: [UserInfoFormComponent.DEFAULT_COUNTRY, Validators.required],
+      })
     });
   }
 
@@ -43,5 +47,13 @@ export class DonationComponent implements OnInit {
     }
 
     return null;
+  }
+
+  validateSocialReason(control: FormControl) {
+    if (!control || !control.parent || !control.parent.get('isCompany').value) {
+      return null;
+    }
+
+    return Validators.compose([Validators.required, Validators.min(2)])(control);
   }
 }
