@@ -32,7 +32,7 @@ export class PaymentComponent implements OnInit {
 
   handleStripePayment(token: any) {
     this.showSpinner = true;
-    const request: IDonationRequest = {
+    const request: IDonationRequest = <IDonationRequest>{
       mode: environment.stripeMode,
       stripeTokenId: token.id,
       ...this.donationData
@@ -47,9 +47,9 @@ export class PaymentComponent implements OnInit {
       this.dialog.open(PaymentFailedDialogComponent);
     },
       () => {
-       this.paying = false;
-        this.showSpinner = false;
-      });
+      this.paying = false;
+      this.showSpinner = false;
+    });
   }
 
   pay() {
@@ -61,6 +61,9 @@ export class PaymentComponent implements OnInit {
       amount: this.donationData.amount,
       email: this.donationData.email,
       allowRememberMe: false,
+      closed: () => {
+        this.paying = false;
+      }
     });
   }
 }
