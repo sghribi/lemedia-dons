@@ -51,3 +51,10 @@ bundle exec cap production deploy
 firebase functions:config:set donation_stripe_test.secret_token="<secret stripe live key test>"
 firebase functions:config:set donation_stripe.secret_token="<secret stripe live key test>"
 ```
+
+### Generate GitHub page / zip to deploy
+
+```
+rm -rf docs
+ng build --output-path docs --base-href lemedia-dons --env=production
+```
