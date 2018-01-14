@@ -36,14 +36,7 @@ Your public key is required on server.
 bundle exec cap testing deploy
 ```
 
-
-### Test environment: dons-lemedia.ghribi.net
-
-Your public key is required on server.
-
-```
-bundle exec cap production deploy
-```
+Test cards : https://stripe.com/docs/testing
 
 ### Configure GCloud function
 
@@ -55,6 +48,5 @@ firebase functions:config:set donation_stripe.secret_token="<secret stripe live 
 ### Generate GitHub page / zip to deploy
 
 ```
-rm -rf docs
-ng build --output-path docs  --env=production --aot=true --sourcemaps=false
+ng build --output-path dist  --env=production --aot=true --sourcemaps=false
 ```
