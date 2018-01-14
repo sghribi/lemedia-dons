@@ -1,6 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {IDonation} from '../donation';
 import {environment} from '../../../environments/environment';
+import {IDonation, IDonationRequest} from '../../interfaces/donation';
+import {HttpClient} from '@angular/common/http';
+import {Router} from '@angular/router';
+import {MatDialog} from '@angular/material';
+import {PaymentFailedDialogComponent} from './dialog-error';
 
 @Component({
   selector: 'app-payment',
@@ -12,15 +16,33 @@ export class PaymentComponent implements OnInit {
   paying: boolean;
   stripeHandler: any;
 
+  constructor(private http: HttpClient, private router: Router, private dialog: MatDialog) {}
+
   ngOnInit() {
     this.paying = false;
     this.stripeHandler = (<any>window).StripeCheckout.configure({
       key: environment.stripePublicKey,
       locale: 'auto',
-      token:  (token: any) => {
-        console.log(token);
-        this.paying = false;
-      }
+      token:  this.handleStripePayment.bind(this),
+    });
+  }
+
+  handleStripePayment(token: any) {
+    const request: IDonationRequest = {
+      mode: environment.stripeMode,
+      stripeTokenId: token.id,
+      ...this.donationData
+    };
+
+    this.http.post(environment.apiEndPoint, request,  {responseType: 'text'})
+    .subscribe(() => {
+        this.router.navigate(['/merci']);
+      }, (error) => {
+      console.error(error);
+      this.dialog.open(PaymentFailedDialogComponent);
+    },
+      () => {
+       this.paying = false;
     });
   }
 

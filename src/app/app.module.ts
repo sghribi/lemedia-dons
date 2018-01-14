@@ -6,7 +6,7 @@ import {
   MatButtonModule, MatButtonToggleModule, MatCardModule, MatCheckboxModule, MatChipsModule, MatCommonModule, MatDialogModule,
   MatExpansionModule,
   MatFormFieldModule, MatGridListModule, MatIconModule,
-  MatInputModule, MatMenuModule, MatOptionModule, MatSelectModule,
+  MatInputModule, MatMenuModule, MatOptionModule, MatSelectModule, MatSnackBarModule,
   MatStepperModule,
   MatTabsModule,
   MatToolbarModule
@@ -24,6 +24,9 @@ import {UserInfoFormComponent} from './components/user-info-form';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {CountryPipe} from './utils/countries';
 import {PaymentComponent} from './components/payment';
+import {HttpClientModule} from '@angular/common/http';
+import {PaymentFailedDialogComponent} from './components/payment/dialog-error';
+import {ThankYouComponent} from './components/thank-you';
 
 @NgModule({
   declarations: [
@@ -37,9 +40,12 @@ import {PaymentComponent} from './components/payment';
     UserInfoFormComponent,
     CountryPipe,
     PaymentComponent,
+    PaymentFailedDialogComponent,
+    ThankYouComponent,
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
@@ -63,11 +69,13 @@ import {PaymentComponent} from './components/payment';
     MatExpansionModule,
     MatGridListModule,
     FlexLayoutModule,
-  ],
+    MatSnackBarModule,
+],
   providers: [],
   bootstrap: [AppComponent],
   entryComponents: [
     CheckInfoDialogComponent,
+    PaymentFailedDialogComponent,
   ]
 })
 export class AppModule { }

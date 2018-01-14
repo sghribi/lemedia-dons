@@ -16,13 +16,13 @@
           <form fxFlex fxLayout="column" fxLayoutGap="10px">
             <div fxLayout="row" fxLayoutGap="30px" fxLayout.lt-md="column" fxLayoutGap.lt-md="0px">
               <mat-form-field fxFill fxFlex="calc(50% - 30px)" fxFlex.lt-md="100%">
-                <input type="email" matInput [formControl]="userInfoForm.controls.personalData.controls.email" name="email" placeholder="Votre adresse email" required autocomplete="off">
+                <input type="email" matInput [formControl]="userInfoForm.controls.personalData.controls.email" name="email" placeholder="Votre adresse email" required>
                 <mat-icon matSuffix>email</mat-icon>
                 <mat-error *ngIf="userInfoForm.controls.personalData.controls.email.invalid">{{getEmailErrorMessage()}}</mat-error>
               </mat-form-field>
 
               <mat-form-field fxFill fxFlex="calc(50% - 30px)" fxFlex.lt-md="100%">
-                <input matInput [formControl]="userInfoForm.controls.personalData.controls.phoneNumber" name="phoneNumber" placeholder="Votre numéro de téléphone" required autocomplete="off">
+                <input matInput [formControl]="userInfoForm.controls.personalData.controls.phoneNumber" name="phoneNumber" placeholder="Votre numéro de téléphone" required>
                 <mat-icon matSuffix>phone</mat-icon>
                 <mat-error *ngIf="userInfoForm.controls.personalData.controls.phoneNumber.invalid">{{getPhoneNumberErrorMessage()}}</mat-error>
               </mat-form-field>
@@ -30,12 +30,12 @@
 
             <div fxLayout="row" fxLayoutGap="30px" fxLayout.lt-md="column" fxLayoutGap.lt-md="0px">
               <mat-form-field fxFill fxFlex="calc(50% - 30px)" fxFlex.lt-md="100%">
-                <input matInput [formControl]="userInfoForm.controls.personalData.controls.lastName" name="lastName" placeholder="Votre nom de famille" required autocomplete="off">
+                <input matInput [formControl]="userInfoForm.controls.personalData.controls.lastName" name="lastName" placeholder="Votre nom de famille" required>
                 <mat-icon matSuffix>perm_identity</mat-icon>
                 <mat-error *ngIf="userInfoForm.controls.personalData.controls.lastName.invalid">{{getLastNameErrorMessage()}}</mat-error>
               </mat-form-field>
               <mat-form-field fxFill fxFlex="calc(50% - 30px)" fxFlex.lt-md="100%">
-                <input matInput [formControl]="userInfoForm.controls.personalData.controls.firstName" name="firstName" placeholder="Votre prénom" required autocomplete="off">
+                <input matInput [formControl]="userInfoForm.controls.personalData.controls.firstName" name="firstName" placeholder="Votre prénom" required>
                 <mat-icon matSuffix>perm_identity</mat-icon>
                 <mat-error *ngIf="userInfoForm.controls.personalData.controls.firstName.invalid">{{getFirstNameErrorMessage()}}</mat-error>
               </mat-form-field>
@@ -44,7 +44,7 @@
             <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="30px" fxLayout.lt-md="column" fxLayoutGap.lt-md="0px">
               <mat-checkbox fxFill fxFlex="calc(50% - 30px)" fxFlex.lt-md="100%" [formControl]="userInfoForm.controls.personalData.controls.isCompany">Je donne au nom d'une entreprise ?</mat-checkbox>
               <mat-form-field fxFill fxFlex="calc(50% - 30px)"  fxFlex.lt-md="100%" *ngIf="userInfoForm.controls.personalData.controls.isCompany.value">
-                <input matInput [formControl]="userInfoForm.controls.personalData.controls.socialReason" name="socialReason" placeholder="Raison sociale" autocomplete="off">
+                <input matInput [formControl]="userInfoForm.controls.personalData.controls.socialReason" name="socialReason" placeholder="Raison sociale">
                 <mat-icon matSuffix>business</mat-icon>
                 <mat-error *ngIf="userInfoForm.controls.personalData.controls.socialReason.invalid">{{getSocialReasonErrorMessage()}}</mat-error>
               </mat-form-field>
@@ -71,7 +71,7 @@
           <form fxFlex fxLayout="column" fxLayoutGap="10px">
             <div fxLayout="row">
               <mat-form-field fxFill fxFlex="100%">
-                <input matInput [formControl]="userInfoForm.controls.locationData.controls.address" placeholder="Votre adresse postale" required autocomplete="off">
+                <input matInput [formControl]="userInfoForm.controls.locationData.controls.address" placeholder="Votre adresse postale" required>
                 <mat-icon matSuffix>home</mat-icon>
                 <mat-error *ngIf="userInfoForm.controls.locationData.controls.address.invalid">{{getAddressErrorMessage()}}</mat-error>
               </mat-form-field>
@@ -80,13 +80,13 @@
             <div fxLayout="row" fxLayoutGap="30px" fxLayout.lt-md="column" fxLayoutGap.lt-md="0px">
 
               <mat-form-field fxFill fxFlex="calc(30% - 30px)" fxFlex.lt-md="100%">
-                <input type="tel" matInput [formControl]="userInfoForm.controls.locationData.controls.zipCode" placeholder="Votre code postal" required autocomplete="off">
+                <input type="tel" matInput [formControl]="userInfoForm.controls.locationData.controls.zipCode" placeholder="Votre code postal" required>
                 <mat-icon matSuffix>location_city</mat-icon>
                 <mat-error *ngIf="userInfoForm.controls.locationData.controls.zipCode.invalid">{{getZipCodeErrorMessage()}}</mat-error>
               </mat-form-field>
 
               <mat-form-field fxFill fxFlex="calc(70% - 30px)" fxFlex.lt-md="100%">
-                <input matInput [formControl]="userInfoForm.controls.locationData.controls.city" placeholder="Votre ville" required autocomplete="off">
+                <input matInput [formControl]="userInfoForm.controls.locationData.controls.city" placeholder="Votre ville" required>
                 <mat-icon matSuffix>location_city</mat-icon>
                 <mat-error *ngIf="userInfoForm.controls.locationData.controls.city.invalid">{{getCityErrorMessage()}}</mat-error>
               </mat-form-field>
@@ -94,7 +94,7 @@
 
             <div fxLayout="row">
               <mat-form-field fxFill fxFlex="100%">
-                <mat-select placeholder="Votre pays" [formControl]="userInfoForm.controls.locationData.controls.country" required autocomplete="off">
+                <mat-select placeholder="Votre pays" [formControl]="userInfoForm.controls.locationData.controls.country" required>
                   <mat-icon matSuffix>map</mat-icon>
                   <mat-option *ngFor="let country of countries" [value]="country.value">{{country.text}}</mat-option>
                 </mat-select>

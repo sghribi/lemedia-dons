@@ -44,3 +44,10 @@ Your public key is required on server.
 ```
 bundle exec cap production deploy
 ```
+
+### Configure GCloud function
+
+```
+firebase functions:config:set donation_stripe_test.secret_token="<secret stripe live key test>"
+firebase functions:config:set donation_stripe.secret_token="<secret stripe live key test>"
+```

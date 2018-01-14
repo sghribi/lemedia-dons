@@ -4,19 +4,7 @@ import {AmountSelectorComponent} from '../amount-selector';
 import {parse} from 'libphonenumber-js';
 import {UserInfoFormComponent} from '../user-info-form';
 import {isEmpty} from 'lodash';
-
-export interface IDonation {
-  amount: number;
-  firstName: string;
-  lastName: string;
-  email: string;
-  phoneNumber: string;
-  companyName?: string;
-  address: string;
-  city: string;
-  zipCode: number;
-  country: string;
-}
+import {IDonation} from '../../interfaces/donation';
 
 @Component({
   selector: 'app-donation',
