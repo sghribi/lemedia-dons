@@ -52,11 +52,11 @@
           </form>
 
           <mat-action-row class="actions">
-            <button mat-button mat-raised-button color="primary" (click)="nextStep()" [disabled]="!userInfoForm.controls.personalData.valid">Continuer</button>
+            <button mat-button mat-raised-button color="primary" type="button" (click)="nextStep()" [disabled]="!isPersonalDataFormValid()">Continuer</button>
           </mat-action-row>
         </mat-expansion-panel>
 
-        <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle="true" [disabled]="!userInfoForm.controls.personalData.valid">
+        <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle="true" [disabled]="!isPersonalDataFormValid()">
           <mat-expansion-panel-header>
             <mat-panel-title>
               Où résidez-vous ?
@@ -104,7 +104,7 @@
           </form>
 
           <mat-action-row class="actions">
-            <button mat-button mat-raised-button color="primary" (click)="nextStep()" [disabled]="!userInfoForm.get('locationData').valid">Continuer</button>
+            <button mat-button mat-raised-button color="primary" type="button" (click)="nextStep()" [disabled]="!isLocationDataFormValid()">Continuer</button>
           </mat-action-row>
         </mat-expansion-panel>
       </mat-accordion>

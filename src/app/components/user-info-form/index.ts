@@ -31,12 +31,36 @@ export class UserInfoFormComponent implements OnInit {
 
   setStep(index: number) {
     this.step = index;
+    this.userInfoForm.markAsPristine();
+    this.userInfoForm.markAsUntouched();
     this.stepChange.emit(this.step);
+    this.resetFormValidation();
   }
 
   nextStep() {
     this.step++;
     this.stepChange.emit(this.step);
+    this.resetFormValidation();
+  }
+
+  resetFormValidation() {
+    this.userInfoForm.markAsPristine();
+    this.userInfoForm.markAsUntouched();
+    this.userInfoForm.updateValueAndValidity();
+  }
+
+  isPersonalDataFormValid() {
+    if (!this.userInfoForm.get('personalData').get('isCompany').value) {
+      this.userInfoForm.get('personalData').get('socialReason').disable();
+    } else {
+      this.userInfoForm.get('personalData').get('socialReason').enable();
+    }
+
+    return this.userInfoForm.get('personalData').valid;
+  }
+
+  isLocationDataFormValid() {
+    return this.userInfoForm.get('locationData').valid;
   }
 
   getEmailErrorMessage() {

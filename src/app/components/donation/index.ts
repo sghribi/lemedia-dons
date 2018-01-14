@@ -68,17 +68,22 @@ export class DonationComponent implements OnInit {
       return null;
     }
 
-    return {
-      amount: this.amountFormGroup.get('amount').value,
-      firstName: this.userInfoFormGroup.get('personalData').get('firstName').value,
-      lastName: this.userInfoFormGroup.get('personalData').get('lastName').value,
-      email: this.userInfoFormGroup.get('personalData').get('email').value,
-      phoneNumber:  this.userInfoFormGroup.get('personalData').get('phoneNumber').value,
-      companyName: this.userInfoFormGroup.get('personalData').get('isCompany').value ? this.userInfoFormGroup.get('personalData').get('companyName').value : '',
-      address: this.userInfoFormGroup.get('locationData').get('address').value,
-      city: this.userInfoFormGroup.get('locationData').get('city').value,
-      zipCode: this.userInfoFormGroup.get('locationData').get('zipCode').value,
-      country: this.userInfoFormGroup.get('locationData').get('country').value,
-    };
+    try {
+      return {
+        amount: this.amountFormGroup.get('amount').value,
+        firstName: this.userInfoFormGroup.get('personalData').get('firstName').value,
+        lastName: this.userInfoFormGroup.get('personalData').get('lastName').value,
+        email: this.userInfoFormGroup.get('personalData').get('email').value,
+        phoneNumber:  this.userInfoFormGroup.get('personalData').get('phoneNumber').value,
+        companyName: this.userInfoFormGroup.get('personalData').get('isCompany').value ?
+          this.userInfoFormGroup.get('personalData').get('companyName').value : '',
+        address: this.userInfoFormGroup.get('locationData').get('address').value,
+        city: this.userInfoFormGroup.get('locationData').get('city').value,
+        zipCode: this.userInfoFormGroup.get('locationData').get('zipCode').value,
+        country: this.userInfoFormGroup.get('locationData').get('country').value,
+      };
+    } catch (e) {
+      return null;
+    }
   }
 }
