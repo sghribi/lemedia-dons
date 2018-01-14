@@ -27,6 +27,8 @@ import {PaymentComponent} from './components/payment';
 import {HttpClientModule} from '@angular/common/http';
 import {PaymentFailedDialogComponent} from './components/payment/dialog-error';
 import {ThankYouComponent} from './components/thank-you';
+import {LegalMentionComponent} from './components/legal-mention';
+import {CookieLawModule} from 'angular2-cookie-law';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,7 @@ import {ThankYouComponent} from './components/thank-you';
     PaymentComponent,
     PaymentFailedDialogComponent,
     ThankYouComponent,
+    LegalMentionComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,6 +73,7 @@ import {ThankYouComponent} from './components/thank-you';
     MatGridListModule,
     FlexLayoutModule,
     MatSnackBarModule,
+    CookieLawModule,
 ],
   providers: [],
   bootstrap: [AppComponent],

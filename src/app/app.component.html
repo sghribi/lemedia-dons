@@ -2,5 +2,9 @@
 <div layout="row" flex>
   <div layout="column">
     <router-outlet></router-outlet>
+    <cookie-law position="bottom">
+      En poursuivant votre navigation sur ce site, vous acceptez l’utilisation de cookies à des fins de mesure d’audience.
+      <a [routerLink]="['mentions-legales']">En savoir plus</a>
+    </cookie-law>
   </div>
 </div>

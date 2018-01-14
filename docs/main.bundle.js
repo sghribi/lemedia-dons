@@ -20,7 +20,7 @@ webpackEmptyAsyncContext.id = "../../../../../src/$$_lazy_route_resource lazy re
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-navbar class=\"mat-elevation-z6\"></app-navbar>\n<div layout=\"row\" flex>\n  <div layout=\"column\">\n    <router-outlet></router-outlet>\n  </div>\n</div>\n"
+module.exports = "<app-navbar class=\"mat-elevation-z6\"></app-navbar>\n<div layout=\"row\" flex>\n  <div layout=\"column\">\n    <router-outlet></router-outlet>\n    <cookie-law position=\"bottom\">\n      En poursuivant votre navigation sur ce site, vous acceptez l’utilisation de cookies à des fins de mesure d’audience.\n      <a [routerLink]=\"['mentions-legales']\">En savoir plus</a>\n    </cookie-law>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -48,22 +48,35 @@ module.exports = module.exports.toString();
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
 
 var AppComponent = (function () {
-    function AppComponent() {
+    function AppComponent(router) {
+        this.router = router;
+        this.router.events.subscribe(function (event) {
+            if (event instanceof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* NavigationEnd */]) {
+                ga('set', 'page', event.urlAfterRedirects);
+                ga('send', 'pageview');
+            }
+        });
     }
     AppComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
             selector: 'app-root',
             template: __webpack_require__("../../../../../src/app/app.component.html"),
             styles: [__webpack_require__("../../../../../src/app/app.component.scss")]
-        })
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]])
     ], AppComponent);
     return AppComponent;
 }());
@@ -98,12 +111,16 @@ var AppComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__angular_common_http__ = __webpack_require__("../../../common/esm5/http.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__components_payment_dialog_error__ = __webpack_require__("../../../../../src/app/components/payment/dialog-error.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__components_thank_you__ = __webpack_require__("../../../../../src/app/components/thank-you/index.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__components_legal_mention__ = __webpack_require__("../../../../../src/app/components/legal-mention/index.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22_angular2_cookie_law__ = __webpack_require__("../../../../angular2-cookie-law/index.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -143,6 +160,7 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_17__components_payment__["a" /* PaymentComponent */],
                 __WEBPACK_IMPORTED_MODULE_19__components_payment_dialog_error__["a" /* PaymentFailedDialogComponent */],
                 __WEBPACK_IMPORTED_MODULE_20__components_thank_you__["a" /* ThankYouComponent */],
+                __WEBPACK_IMPORTED_MODULE_21__components_legal_mention__["a" /* LegalMentionComponent */],
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -157,7 +175,7 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_4__angular_material__["e" /* MatCheckboxModule */],
                 __WEBPACK_IMPORTED_MODULE_4__angular_material__["d" /* MatCardModule */],
                 __WEBPACK_IMPORTED_MODULE_4__angular_material__["t" /* MatTabsModule */],
-                __WEBPACK_IMPORTED_MODULE_5__angular_router__["b" /* RouterModule */].forRoot(__WEBPACK_IMPORTED_MODULE_6__app_routes__["a" /* routes */]),
+                __WEBPACK_IMPORTED_MODULE_5__angular_router__["c" /* RouterModule */].forRoot(__WEBPACK_IMPORTED_MODULE_6__app_routes__["a" /* routes */]),
                 __WEBPACK_IMPORTED_MODULE_4__angular_material__["s" /* MatStepperModule */],
                 __WEBPACK_IMPORTED_MODULE_4__angular_material__["k" /* MatFormFieldModule */],
                 __WEBPACK_IMPORTED_MODULE_4__angular_material__["n" /* MatInputModule */],
@@ -171,6 +189,7 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_4__angular_material__["l" /* MatGridListModule */],
                 __WEBPACK_IMPORTED_MODULE_15__angular_flex_layout__["a" /* FlexLayoutModule */],
                 __WEBPACK_IMPORTED_MODULE_4__angular_material__["r" /* MatSnackBarModule */],
+                __WEBPACK_IMPORTED_MODULE_22_angular2_cookie_law__["a" /* CookieLawModule */],
             ],
             providers: [],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_2__app_component__["a" /* AppComponent */]],
@@ -194,12 +213,18 @@ var AppModule = (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return routes; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_home_index__ = __webpack_require__("../../../../../src/app/components/home/index.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_thank_you__ = __webpack_require__("../../../../../src/app/components/thank-you/index.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_legal_mention__ = __webpack_require__("../../../../../src/app/components/legal-mention/index.ts");
+
 
 
 var routes = [
     {
         path: '',
         component: __WEBPACK_IMPORTED_MODULE_0__components_home_index__["a" /* HomeComponent */],
+    },
+    {
+        path: 'mentions-legales',
+        component: __WEBPACK_IMPORTED_MODULE_2__components_legal_mention__["a" /* LegalMentionComponent */],
     },
     {
         path: 'merci',
@@ -588,7 +613,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".header-background {\n  overflow: hidden; }\n\n.header-section {\n  text-align: center;\n  padding-top: 60px; }\n\n.header-headline h1 {\n  font-size: 56px;\n  font-weight: 300;\n  line-height: 56px;\n  margin: 15px 5px; }\n  .header-headline h1 .header-logo {\n    height: 80px;\n    vertical-align: middle;\n    margin-bottom: 10px; }\n\n.header-headline h2 {\n  font-size: 18px;\n  font-weight: 300;\n  line-height: 28px;\n  margin: 15px 0 25px 0; }\n\n.donation {\n  margin-right: auto;\n  margin-left: auto;\n  max-width: 940px;\n  padding: 0; }\n", ""]);
+exports.push([module.i, ".header-background {\n  overflow: hidden; }\n\n.header-section {\n  text-align: center;\n  padding-top: 60px; }\n\n.header-headline h1 {\n  font-size: 40px;\n  font-weight: 300;\n  line-height: 56px;\n  margin: 15px 5px; }\n  .header-headline h1 .header-logo {\n    height: 80px;\n    vertical-align: middle;\n    margin-bottom: 10px; }\n\n.header-headline h2 {\n  font-size: 18px;\n  font-weight: 300;\n  line-height: 28px;\n  margin: 15px 0 25px 0; }\n\n.donation {\n  margin-right: auto;\n  margin-left: auto;\n  max-width: 940px;\n  padding: 0; }\n", ""]);
 
 // exports
 
@@ -601,7 +626,62 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/home/template.html":
 /***/ (function(module, exports) {
 
-module.exports = "<header class=\"header-background\">\n  <div class=\"header-section\">\n    <div class=\"header-headline\">\n      <h1 class=\"mat-h1\">\n        <span>Je soutiens</span>\n        <img class=\"header-logo\" src=\"../../../assets/img/Le-Média-black.png\" alt=\"Le Média\"/>\n      </h1>\n      <h2>Indépendant, collaboratif, pluraliste, culturel, francophone, féministe, humaniste, antiraciste, écologiste, progressiste</h2>\n    </div>\n  </div>\n</header>\n\n<mat-card class=\"donation\">\n  <mat-card-content>\n    <app-donation></app-donation>\n  </mat-card-content>\n</mat-card>\n\n<div class=\"center\">\n  <app-check-info class=\"pull-center\"></app-check-info>\n</div>\n"
+module.exports = "<header class=\"header-background\">\n  <div class=\"header-section\">\n    <div class=\"header-headline\">\n      <h1 class=\"mat-h1\">\n        <span>Je soutiens</span>\n        <br/>\n        <img class=\"header-logo\" src=\"./assets/img/Le-Média.png\" alt=\"Le Média\"/>\n      </h1>\n      <h2>Indépendant, collaboratif, pluraliste, culturel, francophone, féministe, humaniste, antiraciste, écologiste, progressiste</h2>\n    </div>\n  </div>\n</header>\n\n<mat-card class=\"donation\">\n  <mat-card-content>\n    <app-donation></app-donation>\n  </mat-card-content>\n</mat-card>\n\n<div class=\"center\">\n  <app-check-info class=\"pull-center\"></app-check-info>\n</div>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/legal-mention/index.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LegalMentionComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+var LegalMentionComponent = (function () {
+    function LegalMentionComponent() {
+    }
+    LegalMentionComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'app-legal-mention',
+            template: __webpack_require__("../../../../../src/app/components/legal-mention/template.html"),
+            styles: [__webpack_require__("../../../../../src/app/components/legal-mention/style.scss")]
+        })
+    ], LegalMentionComponent);
+    return LegalMentionComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/legal-mention/style.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".legal-mention {\n  margin-right: auto;\n  margin-left: auto;\n  max-width: 940px;\n  margin-top: 60px; }\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/legal-mention/template.html":
+/***/ (function(module, exports) {
+
+module.exports = "<mat-card class=\"legal-mention\">\n  <mat-card-title>Mentions légales</mat-card-title>\n  <mat-card-content class=\"mat-typography\">\n      <h2>Conditions d’utilisation</h2>\n      <p>\n        L’utilisation de ce site Internet vaut acceptation des conditions mentionnées ci-après.\n        Le Média se réserve la possibilité d’engager des poursuites judiciaires en cas de violation de ces conditions d’utilisation, notamment en cas de non-respect et d’utilisation non autorisée des noms et emblèmes de la Croix-Rouge et du Croissant-Rouge ou en cas de violation des droits liés à l’information, au graphisme, aux textes, vidéos, documents audio, photos et images et plus généralement à l’ensemble du contenu du site.</p>\n\n      <h2>Protection des données personnelles</h2>\n      <p>\n        Vous êtes amené(e) à communiquer des informations personnelles lors de l’utilisation du formulaire de dons.\n        Les informations que vous transmettez sont à usage exclusif de l'association le Média et ne seront en aucun cas transmises à des tiers.\n        Tout utilisateur ayant communiqué des informations directement ou indirectement nominatives, peut demander la communication de ces informations à l’administrateur du service et les faire rectifier le cas échéant, conformément à la loi française N 78-17 du 6 janvier 1978 relative à l’informatique, aux fichiers et aux libertés.\n        Pour exercer ce droit, envoyez-un mail à <a href=\"mailto:support@lemediatv.fr\">support@lemediatv.fr</a>.\n        Nous vous informons que la confidentialité des correspondances transmises par le réseau Internet n’est pas garantie.\n      </p>\n\n      <h2>Décharge de responsabilité</h2>\n      <p>\n        Le Média effectue les démarches nécessaires pour assurer la fiabilité des informations contenues dans ce site.\n        Cependant, elle ne peut encourir une quelconque responsabilité du fait d’erreurs, d’omissions ou des résultats qui pourraient être obtenus à la suite de l’usage des informations diffusées.\n        Le Média n’est tenu qu’à une obligation de moyens concernant les informations mises à disposition sur le site.\n        De même, il n’est en aucun cas responsable de l’infection par des virus ou de tout autre problème informatique ayant des effets destructeurs.\n      </p>\n\n      <h2>Les cookies</h2>\n\n      <h3>Qu'est-ce qu'un cookie ?</h3>\n      <p>Un cookie est une information déposée sur votre disque dur par le serveur du site que vous visitez. Ils ont notamment pour but de collecter des informations relatives à votre navigation sur les sites et de vous adresser des services personnalisés.</p>\n\n      <h3>Comment refuser les cookies ?</h3>\n      <p>Nous vous rappelons que le paramétrage peut modifier vos conditions d'accès à certains services nécessitant l'utilisation de cookies, comme l’accès à votre compte.</p>\n      <p>Vous pouvez à tout moment choisir de désactiver ces cookies dans les paramètres de votre navigateur. Vous pouvez accepter ou refuser les cookies au cas par cas ou bien les refuser systématiquement une fois pour toutes.</p>\n\n      <h2>Le Média</h2>\n      <p>\n        Le Média est une association dont les statuts ont été déposés le 10 octobre 2017, qui a pour objet de créer un média permettant de renforcer les solidarités humaines ainsi que l’harmonie entre les hommes et la nature, et qui prend pour ce faire toutes les initiatives favorisant l’information, la culture, la réflexion, l’échange, le débat et plus généralement le lien social.\n      </p>\n  </mat-card-content>\n</mat-card>\n"
 
 /***/ }),
 
@@ -656,7 +736,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/navbar/template.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar-header\" color=\"primary\">\n  <a mat-button\n     href=\"https://lemediatv.fr\"\n     class=\"lemedia-website-link va-middle\"\n     rel=\"nofollow\"\n  >\n    <i class=\"material-icons\">arrow_back</i>\n    <span>Retour site Le Média</span>\n  </a>\n\n  <div class=\"flex-spacer\"></div>\n\n  <a mat-button\n     [routerLink]=\"'/'\"\n     routerLinkActive\n  >\n    <img class=\"lemedia-logo\"\n         src=\"../../../assets/img/Le-Média.png\"\n         alt=\"Le Média\">\n    <span>Plateforme de dons</span>\n  </a>\n\n  <div class=\"flex-spacer\"></div>\n\n  <mat-basic-chip class=\"va-middle\" class=\"secured-payment va-middle\">\n    <i class=\"material-icons\">lock</i>\n    <span>Paiement sécurisé</span>\n  </mat-basic-chip>\n</nav>\n"
+module.exports = "<nav class=\"navbar-header\" color=\"primary\">\n  <a mat-button\n     href=\"https://lemediatv.fr\"\n     class=\"lemedia-website-link va-middle\"\n     rel=\"nofollow\"\n  >\n    <i class=\"material-icons\">arrow_back</i>\n    <span>Retour site Le Média</span>\n  </a>\n\n  <div class=\"flex-spacer\"></div>\n\n  <a mat-button\n     [routerLink]=\"'/'\"\n     routerLinkActive\n  >\n    <span>Plateforme de dons</span>\n  </a>\n\n  <div class=\"flex-spacer\"></div>\n\n  <mat-basic-chip class=\"va-middle\" class=\"secured-payment va-middle\">\n    <i class=\"material-icons\">lock</i>\n    <span>Paiement sécurisé</span>\n  </mat-basic-chip>\n</nav>\n"
 
 /***/ }),
 
@@ -789,7 +869,7 @@ var PaymentComponent = (function () {
             template: __webpack_require__("../../../../../src/app/components/payment/template.html"),
             styles: [__webpack_require__("../../../../../src/app/components/payment/style.scss")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* Router */], __WEBPACK_IMPORTED_MODULE_4__angular_material__["h" /* MatDialog */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */], __WEBPACK_IMPORTED_MODULE_4__angular_material__["h" /* MatDialog */]])
     ], PaymentComponent);
     return PaymentComponent;
 }());
@@ -1840,7 +1920,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 if (__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].production) {
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_18" /* enableProdMode */])();
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_19" /* enableProdMode */])();
 }
 Object(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_2__app_app_module__["a" /* AppModule */])
     .catch(function (err) { return console.log(err); });
