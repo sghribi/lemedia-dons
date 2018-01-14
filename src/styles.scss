@@ -62,3 +62,17 @@ body {
   margin-bottom: 10px;
   margin-left: 5px;
 }
+
+.cookie-law-custom {
+  .cookie-law-wrapper {
+    max-width: 300px !important;
+    right: 0 !important;
+    left: inherit !important;
+
+    .copy {
+      font-size: 12px !important;
+      line-height: inherit !important;
+      padding: 10px 50px 10px 10px !important;
+    }
+  }
+}

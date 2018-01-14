@@ -20,7 +20,7 @@ webpackEmptyAsyncContext.id = "../../../../../src/$$_lazy_route_resource lazy re
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-navbar class=\"mat-elevation-z6\"></app-navbar>\n<div layout=\"row\" flex>\n  <div layout=\"column\">\n    <router-outlet></router-outlet>\n    <cookie-law position=\"bottom\">\n      En poursuivant votre navigation sur ce site, vous acceptez l’utilisation de cookies à des fins de mesure d’audience.\n      <a [routerLink]=\"['mentions-legales']\">En savoir plus</a>\n    </cookie-law>\n  </div>\n</div>\n"
+module.exports = "<app-navbar class=\"mat-elevation-z6\"></app-navbar>\n<div layout=\"row\" flex>\n  <div layout=\"column\">\n    <router-outlet></router-outlet>\n    <cookie-law position=\"bottom\" class=\"cookie-law-custom\">\n      En poursuivant votre navigation sur ce site, vous acceptez l’utilisation de cookies à des fins de mesure d’audience.\n      <a [routerLink]=\"['mentions-legales']\">En savoir plus</a>\n    </cookie-law>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -613,7 +613,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".header-background {\n  overflow: hidden; }\n\n.header-section {\n  text-align: center;\n  padding-top: 60px; }\n\n.header-headline h1 {\n  font-size: 40px;\n  font-weight: 300;\n  line-height: 56px;\n  margin: 15px 5px; }\n  .header-headline h1 .header-logo {\n    height: 80px;\n    vertical-align: middle;\n    margin-bottom: 10px; }\n\n.header-headline h2 {\n  font-size: 18px;\n  font-weight: 300;\n  line-height: 28px;\n  margin: 15px 0 25px 0; }\n\n.donation {\n  margin-right: auto;\n  margin-left: auto;\n  max-width: 940px;\n  padding: 0; }\n", ""]);
+exports.push([module.i, ".header-background {\n  overflow: hidden; }\n\n.header-section {\n  text-align: center;\n  padding-top: 60px; }\n\n.header-headline h1 {\n  font-size: 40px;\n  font-weight: 300;\n  line-height: 56px;\n  margin: 15px 5px; }\n  .header-headline h1 .header-logo {\n    height: 80px;\n    vertical-align: middle;\n    margin-bottom: 10px; }\n\n.header-headline h2 {\n  font-size: 18px;\n  font-weight: 300;\n  line-height: 28px;\n  margin: 15px 0 25px 0; }\n\n.donation {\n  margin-right: auto;\n  margin-left: auto;\n  max-width: 940px;\n  padding: 0; }\n\nfooter {\n  margin-top: 30px; }\n  footer a {\n    text-decoration: none;\n    color: grey; }\n", ""]);
 
 // exports
 
@@ -626,7 +626,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/home/template.html":
 /***/ (function(module, exports) {
 
-module.exports = "<header class=\"header-background\">\n  <div class=\"header-section\">\n    <div class=\"header-headline\">\n      <h1 class=\"mat-h1\">\n        <span>Je soutiens</span>\n        <br/>\n        <img class=\"header-logo\" src=\"./assets/img/Le-Média.png\" alt=\"Le Média\"/>\n      </h1>\n      <h2>Indépendant, collaboratif, pluraliste, culturel, francophone, féministe, humaniste, antiraciste, écologiste, progressiste</h2>\n    </div>\n  </div>\n</header>\n\n<mat-card class=\"donation\">\n  <mat-card-content>\n    <app-donation></app-donation>\n  </mat-card-content>\n</mat-card>\n\n<div class=\"center\">\n  <app-check-info class=\"pull-center\"></app-check-info>\n</div>\n"
+module.exports = "<header class=\"header-background\">\n  <div class=\"header-section\">\n    <div class=\"header-headline\">\n      <h1 class=\"mat-h1\">\n        <span>Je soutiens</span>\n        <br/>\n        <img class=\"header-logo\" src=\"./assets/img/Le-Média.png\" alt=\"Le Média\"/>\n      </h1>\n      <h2>Indépendant, collaboratif, pluraliste, culturel, francophone, féministe, humaniste, antiraciste, écologiste, progressiste</h2>\n    </div>\n  </div>\n</header>\n\n<mat-card class=\"donation\">\n  <mat-card-content>\n    <app-donation></app-donation>\n  </mat-card-content>\n</mat-card>\n\n<div class=\"center\">\n  <app-check-info class=\"pull-center\"></app-check-info>\n</div>\n\n<footer class=\"center mat-typography\">\n  <a [routerLink]=\"['mentions-legales']\">Mentions légales</a>\n</footer>\n"
 
 /***/ }),
 
