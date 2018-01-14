@@ -56,5 +56,5 @@ firebase functions:config:set donation_stripe.secret_token="<secret stripe live 
 
 ```
 rm -rf docs
-ng build --output-path docs --base-href lemedia-dons --env=production
+ng build --output-path docs  --env=production --aot=true --sourcemaps=false
 ```

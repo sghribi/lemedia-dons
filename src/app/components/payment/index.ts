@@ -5,6 +5,7 @@ import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {MatDialog} from '@angular/material';
 import {PaymentFailedDialogComponent} from './dialog-error';
+import 'rxjs/add/operator/timeout';
 
 @Component({
   selector: 'app-payment',
@@ -14,20 +15,23 @@ import {PaymentFailedDialogComponent} from './dialog-error';
 export class PaymentComponent implements OnInit {
   @Input() donationData: IDonation;
   paying: boolean;
+  showSpinner: boolean;
   stripeHandler: any;
 
   constructor(private http: HttpClient, private router: Router, private dialog: MatDialog) {}
 
   ngOnInit() {
     this.paying = false;
+    this.showSpinner = false;
     this.stripeHandler = (<any>window).StripeCheckout.configure({
       key: environment.stripePublicKey,
-      locale: 'auto',
+      locale: 'fr',
       token:  this.handleStripePayment.bind(this),
     });
   }
 
   handleStripePayment(token: any) {
+    this.showSpinner = true;
     const request: IDonationRequest = {
       mode: environment.stripeMode,
       stripeTokenId: token.id,
@@ -35,6 +39,7 @@ export class PaymentComponent implements OnInit {
     };
 
     this.http.post(environment.apiEndPoint, request,  {responseType: 'text'})
+    .timeout(20000)
     .subscribe(() => {
         this.router.navigate(['/merci']);
       }, (error) => {
@@ -43,7 +48,8 @@ export class PaymentComponent implements OnInit {
     },
       () => {
        this.paying = false;
-    });
+        this.showSpinner = false;
+      });
   }
 
   pay() {
@@ -54,7 +60,7 @@ export class PaymentComponent implements OnInit {
       currency: 'eur',
       amount: this.donationData.amount,
       email: this.donationData.email,
-      metadata: this.donationData,
+      allowRememberMe: false,
     });
   }
 }

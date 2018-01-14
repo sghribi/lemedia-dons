@@ -15,7 +15,7 @@
     </div>
 
     <mat-button-toggle [checked]="isOtherAmountInputChecked(otherAmount)" class="other-amount">
-      <input type="number" autocomplete="off" matInput placeholder="Autre montant" name="value" [(ngModel)]="otherAmount" (change)="onOtherAmountChange(otherAmount)" (focus)="otherAmountFocused = true" (blur)="otherAmountFocused = false" />
+      <input type="number" class="other-amount-input" autocomplete="off" matInput placeholder="Autre montant" name="value" [(ngModel)]="otherAmount" (change)="onOtherAmountChange(otherAmount)" (focus)="otherAmountFocused = true" (blur)="otherAmountFocused = false" />
       <span matSuffix="">€</span>
     </mat-button-toggle>
 

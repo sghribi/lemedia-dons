@@ -6,7 +6,7 @@ import {
   MatButtonModule, MatButtonToggleModule, MatCardModule, MatCheckboxModule, MatChipsModule, MatCommonModule, MatDialogModule,
   MatExpansionModule,
   MatFormFieldModule, MatGridListModule, MatIconModule,
-  MatInputModule, MatMenuModule, MatOptionModule, MatSelectModule, MatSnackBarModule,
+  MatInputModule, MatMenuModule, MatOptionModule, MatProgressSpinnerModule, MatSelectModule, MatSnackBarModule,
   MatStepperModule,
   MatTabsModule,
   MatToolbarModule
@@ -74,6 +74,7 @@ import {CookieLawModule} from 'angular2-cookie-law';
     FlexLayoutModule,
     MatSnackBarModule,
     CookieLawModule,
+    MatProgressSpinnerModule,
 ],
   providers: [],
   bootstrap: [AppComponent],

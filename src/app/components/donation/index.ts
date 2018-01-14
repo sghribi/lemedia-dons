@@ -70,7 +70,7 @@ export class DonationComponent implements OnInit {
 
     try {
       return {
-        amount: this.amountFormGroup.get('amount').value,
+        amount: parseInt(this.amountFormGroup.get('amount').value),
         firstName: this.userInfoFormGroup.get('personalData').get('firstName').value,
         lastName: this.userInfoFormGroup.get('personalData').get('lastName').value,
         email: this.userInfoFormGroup.get('personalData').get('email').value,
