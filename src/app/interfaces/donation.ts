@@ -9,6 +9,7 @@ export interface IDonation {
   city: string;
   zipCode: number;
   country: string;
+  assignment: string;
 }
 
 export interface IDonationRequest extends IDonation {

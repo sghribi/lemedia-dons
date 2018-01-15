@@ -5,6 +5,7 @@ import {parse} from 'libphonenumber-js';
 import {UserInfoFormComponent} from '../user-info-form';
 import {isEmpty} from 'lodash';
 import {IDonation} from '../../interfaces/donation';
+import {AssignmentSelectorComponent} from '../assignment-selector';
 
 @Component({
   selector: 'app-donation',
@@ -21,7 +22,8 @@ export class DonationComponent implements OnInit {
   ngOnInit() {
     this.userInfoStep = 0;
     this.amountFormGroup = this.formBuilder.group({
-      amount: [AmountSelectorComponent.DEFAULT_AMOUNT,  Validators.compose([Validators.required, Validators.min(100)])]
+      amount: [AmountSelectorComponent.DEFAULT_AMOUNT,  Validators.compose([Validators.required, Validators.min(100)])],
+      assignment: [AssignmentSelectorComponent.noAssignment],
     });
     this.userInfoFormGroup = this.formBuilder.group({
       personalData: this.formBuilder.group({
@@ -70,7 +72,8 @@ export class DonationComponent implements OnInit {
 
     try {
       return {
-        amount: parseInt(this.amountFormGroup.get('amount').value),
+        amount: parseInt(this.amountFormGroup.get('amount').value, 10),
+        assignment: this.amountFormGroup.get('assignment').value,
         firstName: this.userInfoFormGroup.get('personalData').get('firstName').value,
         lastName: this.userInfoFormGroup.get('personalData').get('lastName').value,
         email: this.userInfoFormGroup.get('personalData').get('email').value,

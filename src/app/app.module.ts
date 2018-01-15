@@ -6,7 +6,8 @@ import {
   MatButtonModule, MatButtonToggleModule, MatCardModule, MatCheckboxModule, MatChipsModule, MatCommonModule, MatDialogModule,
   MatExpansionModule,
   MatFormFieldModule, MatGridListModule, MatIconModule,
-  MatInputModule, MatMenuModule, MatOptionModule, MatProgressSpinnerModule, MatSelectModule, MatSnackBarModule,
+  MatInputModule, MatMenuModule, MatOptionModule, MatProgressSpinnerModule, MatRadioModule, MatSelectModule, MatSlideToggleModule,
+  MatSnackBarModule,
   MatStepperModule,
   MatTabsModule,
   MatToolbarModule
@@ -29,6 +30,7 @@ import {PaymentFailedDialogComponent} from './components/payment/dialog-error';
 import {ThankYouComponent} from './components/thank-you';
 import {LegalMentionComponent} from './components/legal-mention';
 import {CookieLawModule} from 'angular2-cookie-law';
+import {AssignmentSelectorComponent} from './components/assignment-selector';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,7 @@ import {CookieLawModule} from 'angular2-cookie-law';
     PaymentFailedDialogComponent,
     ThankYouComponent,
     LegalMentionComponent,
+    AssignmentSelectorComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,6 +78,8 @@ import {CookieLawModule} from 'angular2-cookie-law';
     MatSnackBarModule,
     CookieLawModule,
     MatProgressSpinnerModule,
+    MatRadioModule,
+    MatSlideToggleModule,
 ],
   providers: [],
   bootstrap: [AppComponent],
