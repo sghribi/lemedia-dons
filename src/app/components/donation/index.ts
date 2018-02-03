@@ -35,8 +35,8 @@ export class DonationComponent implements OnInit {
         email: ['', Validators.compose([Validators.required, Validators.email])],
       }),
       locationData: this.formBuilder.group({
-        address: ['', Validators.compose([Validators.required, Validators.min(5)])],
-        zipCode: ['', Validators.compose([Validators.required, Validators.pattern('[0-9]{4,5}')])],
+        address: ['', Validators.required],
+        zipCode: ['', Validators.required],
         city: ['', Validators.compose([Validators.required, Validators.min(2)])],
         country: [UserInfoFormComponent.DEFAULT_COUNTRY, Validators.required],
       })

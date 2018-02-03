@@ -94,15 +94,11 @@ export class UserInfoFormComponent implements OnInit {
   }
 
   getAddressErrorMessage() {
-    return this.userInfoForm.get('locationData').get('address').hasError('required') ? 'Vous devez saisir votre adresse postale.' :
-      this.userInfoForm.get('locationData').get('address').hasError('min') ? 'L\'adresse saisie est trop courte.' :
-        '';
+    return this.userInfoForm.get('locationData').get('address').hasError('required') ? 'Vous devez saisir votre adresse postale.' : '';
   }
 
   getZipCodeErrorMessage() {
-    return this.userInfoForm.get('locationData').get('zipCode') .hasError('required') ? 'Vous devez saisir votre code postal.' :
-      this.userInfoForm.get('locationData').get('zipCode').hasError('pattern') ? 'Le code postal saisi a un format incorrect.' :
-        '';
+    return this.userInfoForm.get('locationData').get('zipCode') .hasError('required') ? 'Vous devez saisir votre code postal.' : '';
   }
 
   getCityErrorMessage() {

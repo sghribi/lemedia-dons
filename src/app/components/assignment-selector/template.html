@@ -1,7 +1,9 @@
-<div fxLayout="row">
-  <mat-slide-toggle fxFlex="60%" fxFill (change)="assignToAll($event)" [checked]="true">Je veux financer indifféremment toutes les activités du Média</mat-slide-toggle>
+<div fxLayout="row" fxLayout.lt-sm="column">
+  <mat-slide-toggle fxFlex="60%" fxFlex.lt-sm="100%" fxFill (change)="assignToAll($event)" [checked]="true">
+    Je veux financer toutes les activités du Média
+  </mat-slide-toggle>
 
-  <mat-radio-group fxFlex="40%" fxFill fxLayout="column" fxLayoutGap="10px" *ngIf="assignmentForm.get('assignment').value !== 'all'" [formControl]="assignmentForm.get('assignment')" required>
+  <mat-radio-group fxFlex="40%" fxFlex.lt-sm="100%" fxFill fxLayout="column" fxLayoutGap="10px" *ngIf="assignmentForm.get('assignment').value !== 'all'" [formControl]="assignmentForm.get('assignment')" required>
     <label>Avec ce don, je veux financer :</label>
     <mat-radio-button fxFill fxFlex="100%" *ngFor="let assignment of assignments" [value]="assignment.value">
       {{assignment.label}}
